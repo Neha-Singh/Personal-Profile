@@ -10,10 +10,8 @@ export default function Page() {
     <>
       <Navbar />
       <Hero />
-      <SkillsStrip />
       <Projects />
       <Contact />
-      <Footer />
     </>
   );
 }

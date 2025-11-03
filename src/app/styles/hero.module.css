@@ -1,63 +1,61 @@
+/* Black hero band — fixed, compact height */
 .hero {
   background: #0b1320;
   color: #fff;
-  height: clamp(230px, 27vh, 400px);
+  /* ~26–32% of viewport; prevents super tall banners */
+  height: clamp(220px, 28vh, 360px);
   display: flex;
   align-items: center;
-  padding: 18px 0;
+  overflow: hidden; /* safety net */
+  position: relative;
 }
 
-/* Layout */
+/* Two columns: image | text, and both stretch full band height */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 22px;
+  grid-template-columns: clamp(220px, 28vw, 360px) 1fr;
+  align-items: stretch; /* <— stretch to hero height */
+  gap: 24px;
+  height: 100%; /* <— make children pick up height */
 }
 
-/* Left side */
-.left {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-/* Hero Image */
+/* Image wrapper must fill and be positioning context for Image fill */
 .imageWrapper {
-  flex-shrink: 0;
+  position: relative; /* <— required for Image fill */
+  height: 100%; /* <— fills full hero height */
+  border-radius: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.28);
   overflow: hidden;
-  border-radius: 0;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
+/* The next/image itself */
 .heroImage {
-  width: clamp(190px, 18vw, 240px);
-  height: auto;
-  object-fit: cover;
-  border-radius: 0;
+  object-fit: contain; /* show the whole image */
+  object-position: center top; /* keeps it centered with head visible */
+  background-color: #0d1117; /* optional – fills the gaps nicely */
 }
 
-/* Text section */
+/* Text block */
 .textBlock {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  justify-content: center; /* center vertically within band */
+  gap: 10px;
 }
 
-/* ↓↓↓ Smaller hero title ↓↓↓ */
+/* ↓ Lighter, smaller hero title ↓ */
 .title {
   margin: 0;
-  font-weight: 800;
-  line-height: 1.1;
-  max-width: 520px;
-  font-size: clamp(18px, 2.2vw, 25px); /* was 30px earlier */
-  letter-spacing: 0.2px;
+  font-weight: 700; /* was 800 — reduced boldness */
+  line-height: 1.12;
+  max-width: 740px;
+  font-size: clamp(22px, 2.4vw, 36px); /* was larger; reduced */
+  letter-spacing: 0.1px;
 }
 
-/* Accent colors */
 .react {
   color: #49a3ff;
 }
@@ -65,103 +63,91 @@
   color: #00c2ff;
 }
 
-/* ↓↓↓ Subtitle also smaller ↓↓↓ */
+/* ↓ Smaller subtitle ↓ */
 .subtitle {
   margin: 0;
   color: #cfd8e3;
-  max-width: 460px;
-  font-size: clamp(12px, 1.2vw, 14px);
-  line-height: 1.35;
+  max-width: 640px;
+  font-size: clamp(13px, 1.25vw, 16px);
+  line-height: 1.4;
 }
 
-/* Buttons slightly smaller and closer */
 .buttons {
   display: flex;
-  gap: 8px;
-  margin-top: 2px;
+  gap: 10px;
+  margin-top: 6px;
 }
-
 .primaryBtn,
 .secondaryBtn {
-  padding: 5px 12px;
-  border-radius: 6px;
-  font-size: clamp(11px, 1.2vw, 13px);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: clamp(12px, 1.2vw, 13.5px);
   font-weight: 600;
 }
-
 .primaryBtn {
   background: #0070f3;
   color: #fff;
 }
-
 .secondaryBtn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.28);
   color: #fff;
 }
 
-/* Right side badges */
-.right {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.feature {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 7px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: clamp(11.5px, 1.2vw, 13px);
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.feature:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-1px);
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
-  background: #49a3ff;
-  border-radius: 50%;
-}
-
-/* Responsive */
+/* Responsive: stack vertically on small screens */
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
-    text-align: center;
     gap: 16px;
+    text-align: center;
   }
-
-  .left {
-    flex-direction: column;
-    align-items: center;
+  .imageWrapper {
+    width: clamp(220px, 50vw, 340px);
+    justify-self: center;
   }
-
-  .heroImage {
-    width: 180px;
-  }
-
-  .right {
-    grid-template-columns: repeat(3, 1fr);
+  .buttons {
     justify-content: center;
-    margin-top: 10px;
   }
 }
+/* Buttons and icons row */
+.buttonsRow {
+  display: flex;
+  align-items: center; /* vertical alignment */
+  justify-content: flex-start;
+  gap: 20px; /* space between buttons and icons */
+  margin-top: 8px;
+}
 
-@media (max-width: 640px) {
-  .hero {
-    height: clamp(210px, 32vh, 370px);
-  }
+/* Keep your button styles unchanged */
+.buttons {
+  display: flex;
+  gap: 10px;
+}
 
-  .right {
-    grid-template-columns: repeat(2, 1fr);
+.socialIcons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto; /* push to right edge if in wide layout */
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  color: #ffffffcc;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icon:hover {
+  color: #49a3ff; /* accent color on hover */
+  transform: translateY(-2px);
+}
+
+/* Optional: reposition bottom-right if you want them fixed there */
+@media (min-width: 1025px) {
+  .socialIcons {
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
   }
 }
