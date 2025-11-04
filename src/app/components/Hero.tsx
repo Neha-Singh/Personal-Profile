@@ -9,7 +9,7 @@ export default function Hero() {
         {/* LEFT: Image */}
         <div className={styles.imageWrapper}>
           <Image
-            src="/images/avatar-real.png"
+            src="/images/avatar-real.jpg"
             alt="Neha portrait"
             fill
             sizes="(max-width:1024px) 90vw, 32vw"
