@@ -1,4 +1,4 @@
-import { Linkedin, Github } from "lucide-react"; // ← import icons
+import { Linkedin } from "lucide-react"; // ← import icons
 import Image from "next/image";
 import styles from "../styles/hero.module.css";
 
