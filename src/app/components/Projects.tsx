@@ -21,7 +21,7 @@ export default function Projects() {
             title="VentureEdu – India’s Most Ambitious Startup School"
             body="Developed a multi-page educational platform for entrepreneurs using React and Node.js. Implemented a modular component system, secure API integration, and fast load times through code splitting and image optimization. Fully SEO-optimized with responsive design and server deployment via Hostinger and PM2."
             tags={["React.js"]}
-            link="https://venturedu.com/"
+            link="https://venturedu.vercel.app/"
           />
         </div>
       </div>

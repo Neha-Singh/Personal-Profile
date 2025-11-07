@@ -16,6 +16,21 @@ export default function Hero() {
             className={styles.heroImage}
             priority
           />
+          {/* CTA dock (mobile only; CSS hides on desktop) */}
+          <div className={styles.ctaDock}>
+            <a href="#contact" className={styles.primaryBtn}>
+              Let’s Connect
+            </a>
+            <a
+              href="https://www.linkedin.com/in/neha-singh-73552956"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className={styles.linkedinBadge}
+            >
+              <Linkedin className={styles.icon} />
+            </a>
+          </div>
         </div>
 
         {/* RIGHT: Text */}
@@ -32,17 +47,16 @@ export default function Hero() {
             Transforming ideas into immersive, scalable digital solutions.
           </p>
 
+          {/* desktop buttons + icons (mobile uses .ctaDock above) */}
           <div className={styles.buttonsRow}>
             <div className={styles.buttons}>
               <a href="#contact" className={styles.primaryBtn}>
                 Let’s Connect
               </a>
             </div>
-
-            {/* Social icons aligned to Let's Connect */}
             <div className={styles.socialIcons}>
               <a
-                href="www.linkedin.com/in/neha-singh-73552956"
+                href="https://www.linkedin.com/in/neha-singh-73552956"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
