@@ -38,9 +38,10 @@ export default function Hero() {
           <h1 className={styles.title}>
             Crafting high-performance
             <br />
-            web experiences with <span className={styles.react}>
+            web dev experiences with <span className={styles.react}>
               React
-            </span> & <span className={styles.next}>Next.js</span>
+            </span>{" "}
+            & <span className={styles.next}>Next.js</span>
           </h1>
 
           <p className={styles.subtitle}>
