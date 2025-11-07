@@ -36,12 +36,12 @@ export default function Hero() {
         {/* RIGHT: Text */}
         <div className={styles.textBlock}>
           <h1 className={styles.title}>
-            Crafting high-performance
-            <br />
-            web dev experiences with <span className={styles.react}>
-              React
-            </span>{" "}
-            & <span className={styles.next}>Next.js</span>
+            <span className={styles.line}>Crafting high-performance</span>
+            <span className={styles.line}>web experiences with</span>
+            <span className={styles.line}>
+              <span className={styles.react}>React</span> &{" "}
+              <span className={styles.next}>Next.js</span>
+            </span>
           </h1>
 
           <p className={styles.subtitle}>
