@@ -259,7 +259,7 @@
     font-size: clamp(22px, 6.5vw, 30px);
     line-height: 1.2;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-    margin-top: 272px !important;
+    margin-top: 250px !important;
   }
   .subtitle {
     font-size: 14px;
@@ -302,5 +302,20 @@
 @media (min-width: 641px) and (max-width: 1024px) {
   .textBlock {
     padding-top: calc(36px + env(safe-area-inset-top)) !important;
+  }
+}
+/* move CTA + LinkedIn up by ~30px on mobile */
+@media (max-width: 640px) {
+  /* If you're using the absolute .buttonsRow + .socialIcons approach */
+  .buttonsRow {
+    bottom: calc(12px + 30px) !important;
+  }
+  .socialIcons {
+    bottom: calc(12px + 30px) !important;
+  }
+
+  /* If you're using the .ctaDock wrapper instead */
+  .ctaDock {
+    bottom: calc(12px + 30px) !important;
   }
 }
